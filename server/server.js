@@ -45,9 +45,7 @@ app.get("/callback", async (req, res) => {
     });
     
     const spotifyName = userProfileResponse.data.id; 
-    
-
-    res.redirect(`http://localhost:5173/${spotifyName}?access_token=${access_token}&refresh_token=${refresh_token}`);
+    res.redirect(`http://localhost:5173/rate?access_token=${access_token}&refresh_token=${refresh_token}`);
 });
 
 const PORT = process.env.PORT || 5000;

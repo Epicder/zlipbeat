@@ -1,0 +1,17 @@
+.rate-stars {
+    display: flex;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .star {
+    color: lightgray;
+  }
+  
+  .star.filled {
+    color: gold;
+  }
+  
+  .star:hover {
+    color: orange;
+  }

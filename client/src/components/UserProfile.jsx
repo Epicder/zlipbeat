@@ -8,7 +8,6 @@ const UserProfile = () => {
   const [playlists, setPlaylists] = useState([]);  // Guardaremos las playlists aquí
   const accessToken = new URLSearchParams(window.location.search).get('access_token');
 
-  // Fetch user profile data
   useEffect(() => {
     const fetchUserProfile = async () => {
       const response = await fetch(`https://api.spotify.com/v1/users/${spotify_name}`, {
@@ -21,7 +20,7 @@ const UserProfile = () => {
       setUserData(data);
     };
 
-    // Fetch playlists data
+
     const fetchPlaylists = async () => {
       const response = await fetch(`https://api.spotify.com/v1/me/playlists`, {
         method: 'GET',
