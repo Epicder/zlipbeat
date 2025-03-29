@@ -1,0 +1,132 @@
+.container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #121214;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+
+}
+
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.logo-text {
+    display: inline;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1f1f1f;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 700px;
+    height: 25px;
+    transition: width 0.3s ease;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #111;
+    border: 1px solid var(--main-color);
+    border-radius: 999px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    font-family: "Comfortaa", sans-serif;
+  }
+  
+  .search-bar {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #ddd;
+    font-size: 16px;
+    padding: 10px 15px;
+    outline: none;
+    font-family: "Comfortaa", sans-serif;
+  }
+  
+  .search-button {
+    background: var(--main-color);
+    border: none;
+    padding: 14px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: background 0.2s ease;
+  }
+  
+  .search-button:hover {
+    background: var(--hover-color);
+  }
+
+
+.nav-list {
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: var(--main-color);
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: var(--main-color);
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-item a:hover {
+    transform: scale(1.1);
+    color: var(--hover-color);
+}
+
+.user svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 26px;
+    height: 26px;
+    color: var(--main-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.user svg:hover {
+    color: var(--hover-color);
+}
+
