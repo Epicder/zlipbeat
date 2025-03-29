@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RatingStars from './RatingStars.jsx';
+import { Link } from 'react-router-dom';
 import './components-css/rate.css';
 
 const Rate = () => {
@@ -7,6 +8,29 @@ const Rate = () => {
   const [playlists, setPlaylists] = useState([]);
   const [randomTrack, setRandomTrack] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState(null);
+
+  // Get user ID
+  useEffect(() => {
+    const fetchUserId = async () => {
+      if (!accessToken) return;
+
+      try {
+        const response = await fetch('https://api.spotify.com/v1/me', {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+
+        if (!response.ok) throw new Error('Error fetching user data');
+
+        const data = await response.json();
+        setUserId(data.id);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (accessToken) fetchUserId();
+  }, [accessToken]);
 
   // Obtener playlists
   useEffect(() => {
@@ -66,7 +90,14 @@ const Rate = () => {
 
   return (
     <div>
-      <h2>Rate a Song</h2>
+      <div className="rate-header">
+        <h2>Rate a Song</h2>
+        {userId && (
+          <Link to={`/${userId}`} className="profile-link">
+            View Your Profile
+          </Link>
+        )}
+      </div>
       {loading ? (
         <p>Loading random song...</p>
       ) : randomTrack ? (
@@ -77,7 +108,14 @@ const Rate = () => {
           <div className='rate-container'>
             <h3>Rate it!</h3>
             <div className='rate-stars'>
-              <RatingStars maxRating={5} />
+              <RatingStars 
+                maxRating={5}
+                songId={randomTrack.id}
+                songName={randomTrack.name}
+                artistName={randomTrack.artists.map(artist => artist.name).join(', ')}
+                albumImage={randomTrack.album.images[0]?.url}
+                userId={userId}
+              />
             </div>       
           </div>
           <button className='random-button' onClick={fetchRandomTrack}>Next</button>
